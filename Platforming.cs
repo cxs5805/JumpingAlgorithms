@@ -28,9 +28,40 @@ public class Platforming : MonoBehaviour
     //private int landTimer;
     //public int landDuration;
 
+    // 9/2/17
+    // we need a constant value for sqrt(2)
+    private float halfroot2;
+
 	// Use this for initialization
 	void Start ()
     {
+        // 9/2/17 setting val for root2
+        halfroot2 = Mathf.Sqrt(2f) / 2;
+
+        // 9/2/17
+        // debug for dot product
+        Vector3 myUpVector = new Vector3(0f, 1f);
+        myUpVector.Normalize();
+
+        Vector3 myHalfAngleVector = new Vector3(1f, 1f);
+        myHalfAngleVector.Normalize();
+
+        float myDotProduct = Vector3.Dot(myHalfAngleVector, myUpVector);
+        Debug.Log
+        (
+            "(" + myUpVector.x + ", " + myUpVector.y + ") dotted with (" +
+            myHalfAngleVector.x + ", " + myHalfAngleVector.y + ") = " +
+            myDotProduct
+        );
+
+        Debug.Log(halfroot2);
+
+        string message = "NOOOOOOOO wtf";
+        if (halfroot2 == myDotProduct)
+            message = "awwww sick";
+        Debug.Log(message);
+
+        // back to old stuff
         prevPos = transform.position;
         
         // assume midair, so not landed yet
